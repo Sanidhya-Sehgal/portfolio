@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 const SYSTEMS = [
   {
@@ -72,10 +73,19 @@ const Typewriter = ({ text, delay = 50, onComplete }) => {
 };
 
 const App = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  
   const [booting, setBooting] = useState(true);
   const [bootStep, setBootStep] = useState(0);
-  const [activeTab, setActiveTab] = useState('SYSTEMS');
-  const [selectedSystem, setSelectedSystem] = useState(null);
+  
+  // Derive active tab from pathname
+  const activeTab = location.pathname === '/' ? 'SYSTEMS' : location.pathname.slice(1).toUpperCase();
+  
+  // Handle selected system via search params
+  const systemId = searchParams.get('inspect');
+  const selectedSystem = SYSTEMS.find(s => s.id === systemId);
 
   const bootSequence = [
     'initializing portfolio...',
@@ -93,6 +103,19 @@ const App = () => {
       setTimeout(() => setBooting(false), 500);
     }
   }, [bootStep]);
+
+  const handleTabClick = (tab) => {
+    const path = tab === 'SYSTEMS' ? '/' : `/${tab.toLowerCase()}`;
+    navigate(path);
+  };
+
+  const setSelectedSystem = (sys) => {
+    if (sys) {
+      setSearchParams({ inspect: sys.id });
+    } else {
+      setSearchParams({});
+    }
+  };
 
   if (booting) {
     return (
@@ -127,7 +150,6 @@ const App = () => {
             ))}
           </div>
 
-          {/* Progress Bar */}
           <div className="space-y-2">
             <div className="flex justify-between text-[10px] font-pixel opacity-50 uppercase tracking-widest">
               <span>Loading_Modules</span>
@@ -185,7 +207,7 @@ const App = () => {
           {['SYSTEMS', 'ARCHITECTURE', 'LOGS', 'CONNECT'].map(tab => (
             <button
               key={tab}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => handleTabClick(tab)}
               className={`text-left terminal-btn group relative overflow-hidden ${activeTab === tab ? 'bg-terminal-text text-background shadow-neon scale-[1.05] z-10' : ''}`}
             >
               <span className="relative z-10 flex items-center gap-2">
