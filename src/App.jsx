@@ -11,7 +11,7 @@ const SYSTEMS = [
     architecture: 'High-performance middleware utilizing Groq for real-time SEO content generation and media pipeline synchronization.',
     output: 'Fully automated Shopify listings synchronized to WordPress blogs with high-res assets.',
     github: 'https://github.com/Sanidhya-Sehgal',
-    live: 'https://nexus-cart-sanidhyas-projects-1fb1b59b.vercel.app/',
+    live: 'https://nexus-cart-theta.vercel.app/',
     image: '/nexus_new.png'
   },
   {
