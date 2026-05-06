@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-pixel-text font-mono selection:bg-pixel-accent/20 overflow-hidden;
+    background-image: 
+      radial-gradient(circle at 2px 2px, rgba(0, 242, 255, 0.03) 1px, transparent 0);
+    background-size: 32px 32px;
+  }
+}
+
+@layer components {
+  .terminal-panel {
+    @apply bg-pixel-card border border-terminal-border shadow-neon transition-all duration-200;
+  }
+  
+  .terminal-btn {
+    @apply bg-pixel-card border border-terminal-border px-4 py-2 uppercase font-mono text-[11px] tracking-wider
+           hover:bg-pixel-text hover:text-background hover:shadow-neon
+           transition-all duration-100 flex items-center justify-center gap-2;
+  }
+
+  .pixel-btn-active {
+    @apply bg-pixel-accent text-white shadow-none translate-x-[4px] translate-y-[4px] border-pixel-border;
+  }
+
+  .status-tag {
+    @apply text-[10px] px-2 py-0.5 border border-pixel-text text-pixel-text font-mono uppercase tracking-tighter;
+  }
+}
+
+/* CRT Light Effect (Subtle) */
+.crt-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.02) 50%);
+  background-size: 100% 4px;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Grid background (Lighter) */
+.grid-bg {
+  position: fixed;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(0, 242, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 242, 255, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+  border-left: 1px solid #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 2px solid #050505;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00f2ff;
+}
+
+/* Animations */
+@keyframes pixel-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.animate-pixel-bounce {
+  animation: pixel-bounce 0.6s ease-in-out infinite;
+}
+
+/* System Frame & Image Enhancements */
+.system-frame {
+  @apply relative border-2 border-pixel-border bg-black overflow-hidden shadow-pixel transition-all duration-500;
+}
+
+.system-frame::before {
+  content: "";
+  @apply absolute inset-0 pointer-events-none z-10;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+              linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.system-header {
+  @apply flex items-center justify-between px-3 py-1.5 bg-pixel-border text-white text-[10px] font-bold uppercase tracking-widest;
+}
+
+.system-header-dot {
+  @apply w-1.5 h-1.5 rounded-full;
+}
+
+.scanline-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 242, 255, 0.05) 50%,
+    transparent 100%
+  );
+  background-size: 100% 4px;
+  animation: scanline 10s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.image-glow {
+  @apply transition-all duration-700;
+}
+
+.image-glow:hover {
+  filter: drop-shadow(0 0 15px rgba(0, 242, 255, 0.3));
+  transform: scale(1.02);
+}
