@@ -1,16 +1,44 @@
-# React + Vite
+# SANIDHYA SEHGAL // PIXEL_SYSTEMS v3.4.0
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, immersive developer portfolio built with a "System Operator" aesthetic. This project emphasizes technical rigor, system architecture, and real-time data synchronization through a retro-future pixelated lens.
 
-Currently, two official plugins are available:
+## 🖥️ System Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This portfolio is designed to feel like a terminal interface for a high-end autonomous system. It features a custom design system built with React, Tailwind CSS, and specialized CRT shader effects.
 
-## React Compiler
+### Key Features
+- **Immersive Boot Sequence**: Simulates kernel initialization and module verification.
+- **Pixelated Design System**: Custom 3D pixel borders and retro-themed UI components.
+- **Advanced Visual Effects**: Integrated scanlines, CRT flicker, and grid depth shaders.
+- **Full History Navigation**: Implemented with `react-router-dom` to support browser gestures and deep linking.
+- **System Inspector**: A detailed modal interface for deep-diving into individual project architectures.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Core**: React 19 + Vite
+- **Styling**: Tailwind CSS + Custom Vanilla CSS (CRT/Pixel Utilities)
+- **Routing**: React Router (Browser History & Swipe Support)
+- **Deployment**: Vercel
+- **Typography**: Silkscreen, JetBrains Mono, VT323
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🚀 Running Locally
+
+```bash
+# Clone the repository
+git clone https://github.com/Sanidhya-Sehgal/portfolio.git
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
+```
+
+## 📂 Architecture Note
+
+The application is structured as a "System Dashboard" where state is synchronized across the URL and local components. Every project listed is treated as a "System Module" with its own architecture, flow, and output metrics.
+
+---
+**OPERATOR:** Sanidhya Sehgal  
+**NETWORK:** JNU_NODE_01  
+**STATUS:** [ ACTIVE ]
