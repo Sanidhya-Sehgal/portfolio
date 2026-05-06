@@ -178,48 +178,50 @@ const App = () => {
       <div className="crt-overlay" />
 
       {/* Header Info */}
-      <header className="flex flex-col md:flex-row justify-between items-start mb-8 border-b-2 border-terminal-border pb-6 relative z-10">
-        <div className="mb-4 md:mb-0">
+      <header className="flex flex-col md:flex-row justify-between items-start mb-6 md:mb-8 border-b-2 border-terminal-border pb-4 md:pb-6 relative z-10 gap-4">
+        <div className="w-full md:w-auto">
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-3 h-3 bg-green-500 shadow-[0_0_8px_#22c55e] animate-pulse" />
-            <div className="text-[10px] font-pixel tracking-widest text-green-500">SYSTEM_STATUS: OPERATIONAL</div>
+            <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 shadow-[0_0_8px_#22c55e] animate-pulse" />
+            <div className="text-[8px] md:text-[10px] font-pixel tracking-widest text-green-500">SYSTEM_STATUS: OPERATIONAL</div>
           </div>
-          <h1 className="text-2xl md:text-3xl font-bold tracking-tighter pixel-text-shadow font-pixel">
+          <h1 className="text-xl md:text-3xl font-bold tracking-tighter pixel-text-shadow font-pixel">
             SANIDHYA SEHGAL <span className="text-terminal-dim">//</span> <span className="text-pixel-pink">PIXEL_SYSTEMS</span>
           </h1>
-          <div className="text-[10px] opacity-40 mt-1 font-pixel">V3.4.0 // ARCH: X64_SYSTEM_BUILDER</div>
+          <div className="text-[8px] md:text-[10px] opacity-40 mt-1 font-pixel">V3.4.0 // ARCH: X64_SYSTEM_BUILDER</div>
         </div>
-        <div className="text-right flex flex-col items-end gap-1">
-          <div className="text-[10px] opacity-50 font-pixel uppercase tracking-widest">NETWORK_ID: JNU_NODE_01</div>
-          <div className="text-sm font-pixel text-pixel-pink">{new Date().toLocaleTimeString()}</div>
-          <div className="flex gap-1 mt-1">
+        <div className="flex flex-row md:flex-col justify-between md:justify-end items-center md:items-end w-full md:w-auto gap-4 md:gap-1">
+          <div className="hidden md:block text-[10px] opacity-50 font-pixel uppercase tracking-widest">NETWORK_ID: JNU_NODE_01</div>
+          <div className="text-xs md:text-sm font-pixel text-pixel-pink">{new Date().toLocaleTimeString()}</div>
+          <div className="flex gap-1">
             {[1, 2, 3, 4, 5].map(i => (
-              <div key={i} className={`w-4 h-1 ${i < 4 ? 'bg-terminal-text' : 'bg-terminal-dim'}`} />
+              <div key={i} className={`w-3 h-1 md:w-4 md:h-1 ${i < 4 ? 'bg-terminal-text' : 'bg-terminal-dim'}`} />
             ))}
           </div>
         </div>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 h-[calc(100vh-220px)] relative z-10">
+      <div className="flex flex-col lg:grid lg:grid-cols-12 gap-6 md:gap-8 lg:h-[calc(100vh-220px)] relative z-10 mb-20 md:mb-0">
         {/* Navigation Sidebar */}
-        <nav className="lg:col-span-2 flex flex-col gap-3">
-          <div className="text-[10px] mb-2 opacity-30 font-pixel uppercase">Navigation</div>
-          {['SYSTEMS', 'ARCHITECTURE', 'LOGS', 'CONNECT'].map(tab => (
-            <button
-              key={tab}
-              onClick={() => handleTabClick(tab)}
-              className={`text-left terminal-btn group relative overflow-hidden ${activeTab === tab ? 'bg-terminal-text text-background shadow-neon scale-[1.05] z-10' : ''}`}
-            >
-              <span className="relative z-10 flex items-center gap-2">
-                <span className={activeTab === tab ? 'animate-bounce' : 'group-hover:translate-x-1 transition-transform'}>
-                  {activeTab === tab ? '■' : '□'}
+        <nav className="lg:col-span-2 flex flex-col md:flex-row lg:flex-col gap-2 md:gap-3">
+          <div className="text-[8px] md:text-[10px] mb-1 md:mb-2 opacity-30 font-pixel uppercase">Navigation</div>
+          <div className="grid grid-cols-2 md:flex md:flex-row lg:flex-col gap-2 md:gap-3 w-full">
+            {['SYSTEMS', 'ARCHITECTURE', 'LOGS', 'CONNECT'].map(tab => (
+              <button
+                key={tab}
+                onClick={() => handleTabClick(tab)}
+                className={`text-left terminal-btn group relative overflow-hidden ${activeTab === tab ? 'bg-terminal-text text-background shadow-neon scale-[1.05] z-10' : ''}`}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  <span className={activeTab === tab ? 'animate-bounce' : 'group-hover:translate-x-1 transition-transform'}>
+                    {activeTab === tab ? '■' : '□'}
+                  </span>
+                  {tab}
                 </span>
-                {tab}
-              </span>
-            </button>
-          ))}
-          <div className="mt-8">
-            <div className="text-[10px] mb-2 opacity-30 font-pixel uppercase">Documentation</div>
+              </button>
+            ))}
+          </div>
+          <div className="mt-4 md:mt-8 flex flex-col gap-2">
+            <div className="text-[8px] md:text-[10px] mb-1 md:mb-2 opacity-30 font-pixel uppercase">Documentation</div>
             <a href="/resume.pdf" download className="text-left terminal-btn border-terminal-dim text-terminal-dim hover:text-pixel-pink hover:border-pixel-pink">
               [ GET_RESUME ]
             </a>
@@ -227,7 +229,7 @@ const App = () => {
         </nav>
 
         {/* Main Interface Content */}
-        <div className="lg:col-span-10 terminal-panel p-0 flex flex-col overflow-hidden">
+        <div className="lg:col-span-10 terminal-panel p-0 flex flex-col overflow-hidden min-h-[400px] md:min-h-0">
           <div className="os-window-header">
             <div className="flex gap-2">
               <div className="w-2.5 h-2.5 bg-pixel-pink/30 border border-pixel-pink/50" />
@@ -238,13 +240,13 @@ const App = () => {
           
           <div className="flex-1 overflow-y-auto p-6 md:p-8 custom-scrollbar">
             {activeTab === 'SYSTEMS' && (
-              <div className="flex flex-col gap-8">
-                <div className="mb-6 relative">
-                  <h2 className="text-3xl font-bold mb-4 font-pixel leading-tight">
-                    BUILDING SYSTEMS THAT <br/>
+              <div className="flex flex-col gap-6 md:gap-8">
+                <div className="mb-4 md:mb-6 relative">
+                  <h2 className="text-xl md:text-3xl font-bold mb-3 md:mb-4 font-pixel leading-tight">
+                    BUILDING SYSTEMS THAT <br className="hidden md:block"/>
                     <span className="text-pixel-pink animate-pulse">STAY IN SYNC.</span>
                   </h2>
-                  <p className="text-terminal-dim text-sm max-w-2xl leading-relaxed font-mono italic">
+                  <p className="text-terminal-dim text-[12px] md:text-sm max-w-2xl leading-relaxed font-mono italic">
                     {">"} Specialized in high-performance data pipelines and autonomous AI orchestration. 
                     Approaching code as biological system architecture where equilibrium is the ultimate goal.
                   </p>
@@ -372,8 +374,8 @@ const App = () => {
 
       {/* System Inspector (Detail View) */}
       {selectedSystem && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-background/95 backdrop-blur-sm">
-          <div className="terminal-panel max-w-6xl w-full h-[90vh] flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] border-4 border-terminal-text">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-8 bg-background/95 backdrop-blur-sm">
+          <div className="terminal-panel max-w-6xl w-full h-[95vh] md:h-[90vh] flex flex-col shadow-[0_0_50px_rgba(0,0,0,0.8)] border-4 border-terminal-text">
             <div className="os-window-header bg-terminal-text text-background">
               <div className="flex gap-2">
                 <div className="w-3 h-3 bg-background" />
@@ -387,38 +389,38 @@ const App = () => {
               </button>
             </div>
             
-            <div className="flex-1 overflow-y-auto p-6 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-12 custom-scrollbar">
-              <div className="flex flex-col gap-10">
+            <div className="flex-1 overflow-y-auto p-4 md:p-12 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 custom-scrollbar">
+              <div className="flex flex-col gap-6 md:gap-10">
                 <div className="relative">
-                  <div className="text-[10px] text-pixel-pink font-pixel mb-2 tracking-[0.3em]">PROJECT_ENTITY_0{selectedSystem.id}</div>
-                  <h3 className="text-4xl font-bold uppercase font-pixel tracking-tighter pixel-text-shadow">{selectedSystem.name}</h3>
-                  <div className="mt-4 flex gap-2">
+                  <div className="text-[8px] md:text-[10px] text-pixel-pink font-pixel mb-2 tracking-[0.3em]">PROJECT_ENTITY_0{selectedSystem.id}</div>
+                  <h3 className="text-2xl md:text-4xl font-bold uppercase font-pixel tracking-tighter pixel-text-shadow">{selectedSystem.name}</h3>
+                  <div className="mt-4 flex flex-wrap gap-2">
                     <div className="status-tag border-pixel-pink text-pixel-pink">{selectedSystem.type}</div>
                     <div className="status-tag">STATUS: {selectedSystem.status}</div>
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-6 md:gap-8">
                   {[
                     { label: 'PROBLEM_STATEMENT', content: selectedSystem.problem },
                     { label: 'SYSTEM_FLOW', content: selectedSystem.flow, mono: true },
                     { label: 'ARCHITECTURE', content: selectedSystem.architecture },
                     { label: 'OUTPUT_VALIDATION', content: selectedSystem.output }
                   ].map(sec => (
-                    <section key={sec.label} className="border-l-2 border-terminal-border pl-6 hover:border-pixel-pink transition-colors">
-                      <div className="text-[10px] text-terminal-dim font-pixel uppercase mb-3 tracking-widest">{sec.label}</div>
-                      <div className={`text-sm leading-relaxed ${sec.mono ? 'font-mono bg-terminal-text/5 p-4 border border-terminal-border' : 'opacity-80'}`}>
+                    <section key={sec.label} className="border-l-2 border-terminal-border pl-4 md:pl-6 hover:border-pixel-pink transition-colors">
+                      <div className="text-[8px] md:text-[10px] text-terminal-dim font-pixel uppercase mb-2 md:mb-3 tracking-widest">{sec.label}</div>
+                      <div className={`text-[12px] md:text-sm leading-relaxed ${sec.mono ? 'font-mono bg-terminal-text/5 p-3 md:p-4 border border-terminal-border overflow-x-auto whitespace-pre-wrap md:whitespace-normal' : 'opacity-80'}`}>
                         {sec.content}
                       </div>
                     </section>
                   ))}
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 mt-auto pt-8">
-                  <a href={selectedSystem.github} target="_blank" className="terminal-btn flex-1 py-4 bg-terminal-text text-background font-pixel">
+                <div className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-auto pt-6 md:pt-8">
+                  <a href={selectedSystem.github} target="_blank" className="terminal-btn flex-1 py-3 md:py-4 bg-terminal-text text-background font-pixel">
                     VIEW_SOURCE_CODE
                   </a>
-                  <a href={selectedSystem.live} target="_blank" rel="noopener noreferrer" className="terminal-btn flex-1 py-4 font-pixel text-pixel-pink border-pixel-pink">
+                  <a href={selectedSystem.live} target="_blank" rel="noopener noreferrer" className="terminal-btn flex-1 py-3 md:py-4 font-pixel text-pixel-pink border-pixel-pink">
                     LIVE_SYSTEM_LINK
                   </a>
                 </div>
@@ -474,7 +476,7 @@ const App = () => {
         </div>
       )}
 
-      <footer className="fixed bottom-0 left-0 w-full p-4 flex justify-between items-center text-[8px] md:text-[10px] opacity-40 pointer-events-none font-pixel uppercase tracking-[0.4em] z-50 bg-background/80 backdrop-blur-sm">
+      <footer className="w-full p-4 flex justify-between items-center text-[8px] md:text-[10px] opacity-40 pointer-events-none font-pixel uppercase tracking-[0.4em] z-50 bg-background/80 backdrop-blur-sm mt-8 md:fixed md:bottom-0 md:left-0">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-pixel-pink" />
           <span>Sanidhya Sehgal // Port_Interface_v3.4.0</span>

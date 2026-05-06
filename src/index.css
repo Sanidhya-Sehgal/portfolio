@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-pixel-text font-mono selection:bg-pixel-accent/20 overflow-hidden;
+    @apply bg-background text-pixel-text font-mono selection:bg-pixel-accent/20;
     background-image: 
       radial-gradient(circle at 2px 2px, rgba(0, 242, 255, 0.05) 1px, transparent 0);
     background-size: 32px 32px;
@@ -31,7 +31,7 @@
   }
   
   .terminal-btn {
-    @apply bg-pixel-card border-[2px] border-terminal-border px-4 py-2 uppercase font-pixel text-[10px] tracking-[0.2em]
+    @apply bg-pixel-card border-[2px] border-terminal-border px-3 py-2 md:px-4 md:py-2 uppercase font-pixel text-[8px] md:text-[10px] tracking-[0.2em]
            hover:bg-pixel-text hover:text-background hover:shadow-neon hover:scale-[1.02]
            active:scale-95 active:translate-x-1 active:translate-y-1
            transition-all duration-100 flex items-center justify-center gap-2;
