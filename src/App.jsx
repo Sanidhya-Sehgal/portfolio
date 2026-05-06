@@ -107,7 +107,7 @@ const App = () => {
           </div>
 
           <div className="space-y-3 mb-10">
-            {bootSequence.slice(0, bootStep + 1).map((line, i) => (
+            {bootSequence.slice(0, Math.min(bootStep + 1, bootSequence.length)).map((line, i) => (
               <div key={i} className="flex items-start gap-4">
                 <span className="text-[10px] opacity-30 mt-1">0x00{i}A</span>
                 <div className={`${i === bootStep ? 'text-pixel-pink' : 'text-terminal-text opacity-70'} text-sm`}>
